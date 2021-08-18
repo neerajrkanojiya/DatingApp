@@ -1,0 +1,2 @@
+https://localhost:5001/api/Users //Api direct call
+https://localhost:5001/swagger/index.html //To get Api result
