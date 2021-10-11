@@ -55,3 +55,7 @@ D:\apps\DatingApp\API\bin\Debug\net5.0\Humanizer.dll
 D:\apps\DatingApp\API\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 D:\apps\DatingApp\API\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
 D:\apps\DatingApp\API\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+D:\apps\DatingApp\API\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\apps\DatingApp\API\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+D:\apps\DatingApp\API\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+D:\apps\DatingApp\API\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
