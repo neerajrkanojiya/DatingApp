@@ -1,22 +1,21 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
   <div class="container">   
-            <a class="navbar-brand" href="#">Let's Meet</a>           
-              <ul class="navbar-nav mr-auto" *ngIf="accountService.currentUser$ | async">
+            <a class="navbar-brand" routerLink='/' routerLinkActive='active'>Let's Meet</a>           
+              <ul class="navbar-nav mr-auto">
+                <ng-container *ngIf="accountService.currentUser$ | async">
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Matches</a>
+                  <a class="nav-link" routerLink='/members' routerLinkActive='active'>Matches</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">List</a>
+                  <a class="nav-link" routerLink='/lists' routerLinkActive='active'>List</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Messages</a>
+                  <a class="nav-link" routerLink='/messages' routerLinkActive='active'>Messages</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#" (click)="logout()">Logout</a>
-                </li>
+              </ng-container>
               </ul> 
-              <div class="dropdown" dropdown *ngIf="accountService.currentUser$ | async"> 
-                <a class="dropdown-toggle text-light" dropdownToggle> Welcome User</a>
+              <div class="dropdown" dropdown *ngIf="(accountService.currentUser$ | async) as user"> 
+                <a class="dropdown-toggle text-light" dropdownToggle> Welcome {{user.username | titlecase}}</a>
                 <div class="dropdown-menu" mt-3 *dropdownMenu>
                   <a class="dropdown-item">Edit Profile</a>
                   <div class="dropdown-divider"></div>
@@ -32,7 +31,7 @@
                 name="password"
                 [(ngModel)]="model.password"
                 class="form-control mr-sm-2" type="password" placeholder="Password" autocomplete="off">
-                <button class="btn btn-outline-success" type="submit">Login</button>
+                <button class="btn btn-success" type="submit">Login</button>
               </form>
             </div>          
   </nav>
