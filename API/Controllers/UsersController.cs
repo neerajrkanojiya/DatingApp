@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class UsersController : BaseApiController
     {
         private readonly IMapper _mapper;
