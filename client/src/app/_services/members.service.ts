@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Member } from '../_models/member';
-import { Observable } from 'rxjs';
-
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +15,13 @@ baseUrl = environment.apiUrl;
   }
   getMember(username: string){
     return this.http.get<Member>(this.baseUrl + 'users/' + username);
+  }
+  udpateMember(member:Member){
+    return this.http.put(this.baseUrl + 'users', member).pipe(
+      // map(() => {
+      //   const index = this.members.indexOf(member);
+      //   this.members[index] = member;
+      // })
+    )
   }
 }

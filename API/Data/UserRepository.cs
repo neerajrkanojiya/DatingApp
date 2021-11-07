@@ -30,9 +30,9 @@ namespace API.Data
 
         public async Task<IEnumerable<MemberDto>> GetMembersAsync()
         {
-           return await _context.Users
-            .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
-            .ToListAsync();
+            return await _context.Users
+             .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
+             .ToListAsync();
         }
 
         public async Task<Appuser> GetUserByIdAsync(int Id)
@@ -56,12 +56,12 @@ namespace API.Data
 
         public async Task<bool> SaveAllAsync()
         {
-            return await _context.SaveChangesAsync()>0;
+            return await _context.SaveChangesAsync() > 0;
         }
 
         public void Update(Appuser user)
         {
-          _context.Entry(user).State=EntityState.Modified;
+            _context.Entry(user).State = EntityState.Modified;
         }
     }
 }
