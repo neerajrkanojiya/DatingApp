@@ -17,6 +17,8 @@ using API.Interface;
 using API.Services;
 using API.Extentions;
 using API.Middleware;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace API
 {
@@ -37,10 +39,12 @@ namespace API
             services.AddControllers();
             services.AddCors();
             services.AddIdentityServices(_config);
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
-            });
+            services.Configure<IdentityOptions>(options => 
+    options.ClaimsIdentity.UserIdClaimType = ClaimTypes.NameIdentifier);
+            // services.AddSwaggerGen(c =>
+            // {
+            //     c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
+            // });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +56,9 @@ namespace API
             //     app.UseSwagger();
             //     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
             // }
+            app.UseAuthentication();
+            app.UseAuthorization();
+            
             app.UseMiddleware<ExceptionMiddleware>();
             
             app.UseHttpsRedirection();
