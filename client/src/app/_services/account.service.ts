@@ -20,8 +20,7 @@ export class AccountService {
        {
          const user = responce;
          if(user){
-           localStorage.setItem('user',JSON.stringify(user));
-           this.CurrentUserSource.next(user);
+          this.setCurrentUser(user);
          }
        })
      )
@@ -32,14 +31,14 @@ export class AccountService {
       map((user: User)=>
       {
         if(user){      
-          localStorage.setItem('user',JSON.stringify(user));
-          this.CurrentUserSource.next(user);
+          this.setCurrentUser(user);
         }      
       })
     )
   }
   setCurrentUser(user: User)
   {
+    localStorage.setItem('user',JSON.stringify(user));
     this.CurrentUserSource.next(user);
   }
   logout()
