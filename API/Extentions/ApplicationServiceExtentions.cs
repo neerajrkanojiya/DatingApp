@@ -12,12 +12,13 @@ namespace API.Extentions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
-             //following ITokenService,TokenServices are requierd only for testing.
+            //following ITokenService,TokenServices are requierd only for testing.
             services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
-            services.AddScoped<ITokenService,TokenService>();
+            services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IPhotoService, PhotoService>();
-             services.AddScoped<IUserRepository,UserRepository>();
-             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
+            services.AddScoped<LogUserActivity>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddDbContext<DataContext>(options =>
             {
                 object p = options.UseSqlite(config.GetConnectionString("DefaultConnection"));
